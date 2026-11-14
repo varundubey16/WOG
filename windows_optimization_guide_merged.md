@@ -1,19 +1,17 @@
-# Comprehensive Windows 10/11 Optimization Guide for Gaming, Performance, Storage, and Networking
+# Windows 7/10/11 Optimization Guide
 
-**Reviewed: 14 November 2026**  
-**Scope:** Windows 10 and Windows 11 desktops and laptops. Some menu names differ by Windows version and edition.
+**Reviewed: 22 December 2024**  
+**Scope:** Windows 7/10/11 desktops and laptops. Some menu names differ by Win version/edition.
 
-> **NOTE:** THE `.VBS` SCRIPT FILE HAS BEEN REMOVED BECAUSE IT CAUSED ISSUES ON WINDOWS 11 AND ALSO STARTED CAUSING ISSUES ON WINDOWS 10. IT WILL BE REVIEWED AND UPDATED SEPARATELY. DO NOT DOWNLOAD OR RUN AN OLD COPY.
+> **NOTE:** removed the `.VBS` SCRIPT FILE HAS BECAUSE IT STARTED CAUSING ISSUES ON WINDOWS 10 and was not working in 11. WILL REVIEW AND UPDATE IT SEPARATELY.
 
-This guide combines Windows cleanup, gaming optimization, network tuning, driver maintenance, BIOS checks, and advanced troubleshooting into one ordered workflow. It is designed to be followed from top to bottom, but not every tweak should be applied to every computer. Use the priority and impact table to decide what is worth changing on your hardware.
+New guide combines Win cleanup, optimization, network tuning, driver maintenance, BIOS checks + some advanced troubleshooting into one ordered workflow. The VBS was doing all random, now the md is designed to be followed from top to bottom way, but NOT every tweak needed to be applied to every computer. Made a priority table & impact table to decide what is worth changing on your hardware after seeing any changes.
 
-## Read this first
+## Read this first (added Dec 2025)
 
-- Windows 10 standard support ended on **14 October 2025**. In 2026, use an eligible Extended Security Updates (ESU) enrollment or move to a supported Windows version. Windows 7 is long out of support and should not be used as an internet-connected daily operating system.
+- Windows 10 standard support ended on **14 October 2025**... so System Security related tweaks are not too safe... so removed some of them...
 - Create a restore point before changing system settings. A restore point is useful for rolling back system configuration, but it is **not** a backup of personal files.
-- Benchmark before and after. A tweak is not an improvement unless it produces a repeatable result on your machine.
-- Prefer official Windows, motherboard/laptop, Intel, AMD, NVIDIA, and peripheral-vendor tools. Avoid random driver packs, registry cleaners, unsigned drivers, and one-click debloat scripts you have not inspected.
-- Do not apply every registry, service, network, BIOS, or security tweak from a video. Modern Windows already manages many of these settings dynamically.
+- Pls do benchmark before & after. A tweak is NOT an improvement, UNLESS it produces a repeatable result on your machine.
 
 ## Priority and expected impact table
 
@@ -22,18 +20,18 @@ This guide combines Windows cleanup, gaming optimization, network tuning, driver
 
 | Priority | Tweak / area | Expected impact | Edit / recommended action | Risk / limitation |
 |---|---|---|---|---|
-| P0 | Baseline benchmark | High diagnostic value | Record boot time, free space, CPU/RAM/disk use, FPS/frame times, ping, jitter, packet loss and internet speed before changes | No direct speed gain; essential for comparison |
-| P0 | System Restore | High recovery value | Enable protection, set a 3–5% allocation if suitable, remove old points only if needed, then create a fresh named point | Deleting old points removes rollback history |
+| P0 | Baseline | High diagnostic value | Record boot time, free space, CPU/RAM/disk use, FPS/frame times, ping, jitter, packet loss and internet speed before changes | No direct speed gain; essential for comparison |
+| P0 | System Restore | High recovery value | Enable protection, set a 3–5% allocation if suitable, remove old points only if needed, then create a fresh named point | Delete old points + remove rollback history |
 | P1 | Windows updates and official drivers | Medium; sometimes high when fixing a bug | Install supported Windows updates and correct chipset, LAN/Wi-Fi and GPU drivers | A newest driver is not always the most stable; retain rollback option |
-| P1 | Startup apps and unused software | Medium to high on cluttered systems | Disable nonessential startup apps; uninstall software you recognize and do not use | Disabling hardware/security components can break features |
-| P1 | Disk cleanup and Storage Sense | High for a nearly full drive; otherwise mostly storage recovery | Remove selected temporary/update files; enable Storage Sense carefully | Review Downloads, Recycle Bin and previous Windows installation before deletion |
-| P1 | Visual effects and background apps | Low to medium; may improve perceived responsiveness | Reduce animations/transparency; close or restrict apps that truly run in the background | Small gains on powerful PCs; personal usability trade-off |
-| P1 | Game Mode and per-game GPU assignment | Low to medium; game-dependent | Enable Game Mode; select High performance GPU for a game on a hybrid-GPU laptop | Not a guaranteed FPS increase |
+| P1 | Startup apps + unused software | Medium to high on cluttered systems | Disable nonessential startup apps; uninstall software you recognize and do not use | Disabling hardware/security components can break features |
+| P1 | Disk cleanup/Storage Sense | High for a nearly full drive; otherwise mostly storage recovery | Remove selected temporary/update files; enable Storage Sense carefully | Review Downloads, Recycle Bin and previous Windows installation before deletion |
+| P1 | Visual effects + background apps | Low to medium; may improve perceived responsiveness | Reduce animations/transparency; close or restrict apps that truly run in the background | Small gains on powerful PCs; personal usability trade-off |
+| P1 | Game Mode | Low to medium; game-dependent | Enable Game Mode; select High performance GPU for a game on a hybrid-GPU laptop | Not a guaranteed FPS increase |
 | P1 | Drive optimization | Medium when an HDD is fragmented; routine maintenance on SSD | Use Windows Optimize Drives; HDD gets defrag, SSD gets TRIM/optimization | Do not use third-party forced defrag on SSDs |
-| P2 | Game-specific GPU control-panel settings | Medium in particular games | Tune per-game settings; use Reflex/Anti-Lag where supported | Global overrides can reduce image quality or cause stutter |
-| P2 | Network adapter power features | Low to medium if they cause link drops or latency variation | Test Energy Efficient Ethernet/Green Ethernet and device power management only when symptoms exist | More power use; Wi-Fi battery life may decrease |
+| P2 | GPU control-panel settings | Medium in particular games | Tune per-game settings; use Reflex/Anti-Lag where supported | Global overrides can reduce image quality or cause stutter |
+| P2 | Network adapter/power features | Low to medium if they cause link drops or latency variation | Test Energy Efficient Ethernet/Green Ethernet and device power management only when symptoms exist | More power use; Wi-Fi battery life may decrease |
 | P2 | DNS selection | Low; affects name lookups, not game-server ping | Compare ISP DNS with Google/Cloudflare or a reputable benchmark | Does not raise bandwidth or reduce an established game's route latency |
-| P2 | Cache reset (browser, Store, GPU, Spotify) | Low to medium for troubleshooting or freeing space | Clear the specific cache only when large, corrupt, or causing a problem | First launch may be slower while cache rebuilds |
+| P2 | Cache reset (browser, Store, GPU, & apps if u have, like spotify) | Low to medium for troubleshooting or freeing space | Clear the specific cache only when large, corrupt, or causing a problem | First launch may be slower while cache rebuilds |
 | P2 | BIOS XMP/EXPO and Resizable BAR | Potentially medium or high on a compatible system | Enable only supported features; validate stability after each change | Instability, boot loops, or data corruption if overclock is unstable |
 | P3 | Registry and TCP Optimizer presets | Uncertain / often negligible | Keep defaults unless solving a measured issue; export registry and save original network settings | Can make latency, throughput, audio, or networking worse |
 | P3 | Core parking, timer resolution, Process Lasso, affinities | Usually low / workload-specific | Test one change at a time and measure frame times | More heat/power, scheduling regressions, or unstable behavior |
@@ -43,7 +41,7 @@ This guide combines Windows cleanup, gaming optimization, network tuning, driver
 
 # PART A — PREPARATION AND BASELINE
 
-## 1. Benchmark your current system first
+## 1. DO benchmark your current system first
 
 Do not start changing settings without recording how the computer performs now.
 
