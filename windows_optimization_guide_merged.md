@@ -13,7 +13,7 @@ New guide combines Win cleanup, optimization, network tuning, driver maintenance
 - Create a restore point before changing system settings. A restore point is useful for rolling back system configuration, but it is **not** a backup of personal files.
 - Pls do benchmark before & after. A tweak is NOT an improvement, UNLESS it produces a repeatable result on your machine.
 
-## Priority and expected impact table
+## Priority + expected impact - table
 
 **Priority:** P0 = preparation/safety; P1 = best first changes; P2 = situational, test on your hardware; P3 = advanced or experimental.  
 **Impact** is the likely practical benefit, not a guaranteed FPS percentage. Storage cleanup mostly helps when the drive is nearly full; it does not magically make a healthy PC faster.
@@ -43,16 +43,16 @@ New guide combines Win cleanup, optimization, network tuning, driver maintenance
 
 ## 1. DO benchmark your current system first
 
-Do not start changing settings without recording how the computer performs now.
+Do not start changing settings without recording how the computer performs RIGHT now. So get a brief idea of whats happening to ur machine....
 
 ### System baseline
 
-1. Open Task Manager with `Ctrl + Shift + Esc`.
-2. Check **Processes**, **Performance**, and **Startup apps**.
-3. Record CPU, memory, disk and GPU usage while idle and while running your usual game/application.
+1. Open Task Manager by `Ctrl + Shift + Esc`.
+2. Check **Processes**, **Performance**, & **Startup apps**.
+3. See ur CPU, memory, disk & GPU usage while idle and while running your usual game/application.
 4. Record available space on `C:` and other drives.
 5. Record normal boot-to-desktop time and the time taken to launch your usual applications.
-6. For games, record average FPS, 1% lows if available, frame-time consistency, temperature and GPU/CPU utilization. Use the same game, scene, graphics settings and measurement period after changes.
+6. For games, record average FPS, 1% lows if available, frame-time consistency, temperature and GPU/CPU utilization. Use the same game, scene, graphics settings and measurement period after changes...
 
 ### Internet baseline
 
@@ -62,7 +62,7 @@ Do not start changing settings without recording how the computer performs now.
 4. For gaming, record ping to the actual game region/server. A generic speed test does not measure the route to every game server.
 5. Repeat tests after changes using the same device, connection type, test server and approximate conditions.
 
-**Why:** This helps distinguish a PC problem from a Wi-Fi, router, ISP or game-server problem. Do not judge a tweak from one speed test.
+**Why this?** Cuz it helps distinguish PC problem from a Wi-Fi/router/ISP/location problem.
 
 ## 2. Update Windows and install the correct drivers
 
@@ -684,7 +684,7 @@ Some optimization videos recommend turning off hardware acceleration in Chrome, 
 - If the CPU then becomes busier or video playback becomes worse, turn it back on.
 - Do not disable hardware acceleration in every application by default. On many systems it reduces CPU workload.
 
-## 38. BIOS / UEFI checks for power users
+## 38. BIOS / UEFI checks for POWER users
 
 BIOS changes can matter, but incorrect settings can prevent booting. Photograph or record every original setting before changing anything.
 
@@ -720,7 +720,7 @@ Monitor temperatures and clock behavior under load. Thermal throttling, a power-
 
 # PART J — FINAL HEALTH CHECK, RESTART AND VALIDATION
 
-## 41. Repair Windows component and system files
+## 41. Repair Windows component and system files, if they need to be, just run, Win will decide...
 
 Open Terminal / Command Prompt as Administrator. Run DISM first, then SFC:
 
@@ -736,11 +736,11 @@ DISM /Online /Cleanup-Image /CheckHealth
 DISM /Online /Cleanup-Image /ScanHealth
 ```
 
-These commands repair/check Windows component and protected system files. They are maintenance/troubleshooting tools, not FPS boosters. Let each command finish before starting the next one.
+These cmds repair/check Win components & protected system files. They are maintenance/troubleshooting tools, so let each command finish before starting the next one.
 
 ## 42. Malware scan
 
-Open `Settings > Privacy & security > Windows Security > Virus & threat protection` and run a scan if you suspect malware, unusual background activity or unexplained resource use. You can also run:
+Open `Settings > Privacy & security > Windows Security > Virus & threat protection` and run a scan, its Win provided built in, You can also run:
 
 ```text
 mrt
@@ -771,7 +771,7 @@ Microsoft's Malicious Software Removal Tool is not a replacement for Microsoft D
 | When a game is updated or performance changes | Re-test game-specific GPU settings, frame cap, HAGS, overlays and background apps |
 | Periodically | Check Windows Update/support status, GPU/chipset/network driver updates, drive health and temperatures |
 
-## Tweaks intentionally not recommended as universal settings
+## Tweaks NOT recommended as universal settings, you try to see how much of a difference it makes for you...
 
 - Selecting the maximum processor count in `msconfig` (leave it unchecked; Windows already schedules available processors).
 - Clearing Prefetch on a routine schedule.
@@ -788,18 +788,8 @@ Microsoft's Malicious Software Removal Tool is not a replacement for Microsoft D
 
 ---
 
-# SOURCES AND REFERENCE VIDEOS
 
-### Reference videos supplied for this guide
-
-1. [Panjno — Windows optimization reference](https://youtu.be/wkJBDEDDS5o?si=moTQOkBxOsO5B6V5)
-2. [Windows optimization reference 2](https://youtu.be/X7FObUG1SS8?si=Npc9XAq6AU5NWCI)
-3. [Windows optimization reference 3](https://www.youtube.com/watch?v=8am0IB13Udg)
-4. [Windows cache-clearing reference](https://www.youtube.com/watch?v=KlLA4dv8REE)
-5. [Windows power-user setup reference](https://www.youtube.com/watch?v=Xc7l8PCTJyg)
-6. [Windows 11 gaming optimization reference](https://www.youtube.com/watch?v=Ntkc6PeImhU)
-
-### Official / technical references
+### my technical references nd sources
 
 - [Microsoft — Tips to improve PC performance in Windows](https://support.microsoft.com/en-us/windows/experience/performance-optimization/tips-to-improve-pc-performance-in-windows)
 - [Microsoft — Defragment and optimize data drives](https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/defragment-optimize-your-data-drives-in-windows)
